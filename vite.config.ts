@@ -10,7 +10,7 @@ export default defineConfig({
             //Defines the entry point for the library build. It resolves
             //to src/index.ts,indicating that the library starts from this file.
             entry: path.resolve(__dirname, "src/index.ts"),
-            name: "react-jp-ui",
+            name: "formardize",
             //A function that generates the output file
             //name for different formats during the build
             fileName: (format) => `index.${format}.js`,
@@ -33,5 +33,10 @@ export default defineConfig({
     //react() enables React support.
     //dts() generates TypeScript declaration files (*.d.ts)
     //during the build.
-    plugins: [react(), dts()],
+    plugins: [
+        react(),
+        dts({
+            exclude: ["**/*.stories.(ts|tsx)"],
+        }),
+    ],
 });
